@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 以下总结来源于https://cn.vuejs.org/v2/guide/instance.html# -->
+	<!--创建  -->
+	var vm = new vue({})
+	<!-- 一直绑定 -->
+	<span>message:{{msg}}</span>
+	<!-- 可以掺杂js语法的绑定 -->
+	{{number +1}}
+	{{ok ? 'yes':'no'}}
+	{{message.split('').reverse().join('')}}
+	<!-- 仅绑定一次 -->
+	<span v-once>{{msg}}</span>
+	<!-- 指令 -->
+	<div v-html='rawHtml'></div>
+	<div v-bind:id='userId'></div>
+	<button v-bind:disabled='isButtonDisabled'>button</button>
+	<p v-if='seen'>see</p>
+	<!-- 可以接收参数，在指令名称后以冒号表示 -->
+	<a v-bind:href="url"></a>
+	<a href="" v-on:click='doSomething'></a>
+	<!-- 缩写 -->
+	<a v-bind:href="url"></a>变成<a :href="url"></a>
+	<a href="" v-on:click='doSomething'></a>变成<a @click='doSomething'></a>
+	<!-- 修饰符 -->
+	<form v-on:submit.prevent='onSubmit'></form>
+	<!-- 上面这行代码是对于触发的事件阻止冒泡 -->
+
+
+</body>
+</html>
