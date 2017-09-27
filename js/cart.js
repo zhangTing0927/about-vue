@@ -7,6 +7,7 @@ new Vue({
     delFlag: false,
     curProduct: ''
   },
+  //局部过滤器
   filters: {
     formatMoney: function(value) {
       return "¥" + value.toFixed(2);
@@ -26,6 +27,7 @@ new Vue({
           // _this.totalMoney =  res.body.result.totalMoney;
         });
       },
+      //当商品数量增多或减少时，价钱相应的改变
       changeMoney: function(product, way) {
         if (way > 0) {
           product.productQuantity++;
@@ -39,6 +41,7 @@ new Vue({
         this.calcTotalPrice();
 
       },
+      //单选的样式改变
       selectedProduct: function(item) {
         if (typeof item.checked == 'undefined') {
           // Vue.set(item, "checked", true);
@@ -49,6 +52,7 @@ new Vue({
         }
         this.calcTotalPrice();
       },
+      //样式的全选
       checkAll: function(flag) {
         this.checkAllFlag = flag;
         var _this = this;
@@ -62,6 +66,7 @@ new Vue({
         });
         this.calcTotalPrice();
       },
+      //总价钱的计算
       calcTotalPrice: function() {
         var _this = this;
         this.totalMoney = 0;
@@ -71,10 +76,12 @@ new Vue({
           }
         });
       },
+      //删除商品确认框
       delConfirm: function(item) {
         this.delFlag = true;
         this.curProduct = item;
       },
+      //删除商品操作
       delProduct: function() {
         var index = this.productList.indexOf(this.curProduct);
         this.productList.splice(index, 1);
